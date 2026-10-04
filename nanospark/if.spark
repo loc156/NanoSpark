@@ -1,0 +1,59 @@
+if_depth -1 addMAP
+if_cond
+_TOSCACHE
+if_cond_ if_depth getMAP int2str concat
+_TOSTACK
+_ADDMACRO
+CLEARSC
+
+add_if_depth
+_TOSCACHE
+if_depth
+if_depth getMAP 1 +
+addMAP
+_TOSTACK
+_ADDMACRO
+CLEARSC
+
+sub_if_depth
+_TOSCACHE
+if_depth
+if_depth getMAP 1 -
+addMAP
+_TOSTACK
+_ADDMACRO
+CLEARSC
+
+if(
+_TOSCACHE
+add_if_depth
+if_cond
+_TOSTACK
+_ADDMACRO
+CLEARSC
+
+)if
+_TOSCACHE
+addMAP
+if_cond getMAP
+IF
+_TOSTACK
+_ADDMACRO
+CLEARSC
+
+else
+_TOSCACHE
+if_cond getMAP not
+IF
+_TOSTACK
+_ADDMACRO
+CLEARSC
+
+end_if
+_TOSCACHE
+if_cond
+deletedMAP
+sub_if_depth
+_TOSTACK
+_ADDMACRO
+CLEARSC

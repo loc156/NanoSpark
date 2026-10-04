@@ -1,0 +1,56 @@
+while_depth -1 addMAP
+while_cond
+_TOSCACHE
+while_cond_ while_depth getMAP int2str concat
+_TOSTACK
+_ADDMACRO
+CLEARSC
+
+while_body
+_TOSCACHE
+while_body_ while_depth getMAP int2str concat
+_TOSTACK
+_ADDMACRO
+CLEARSC
+
+add_while_depth
+_TOSCACHE
+while_depth
+while_depth getMAP 1 +
+addMAP
+_TOSTACK
+_ADDMACRO
+CLEARSC
+
+sub_while_depth
+_TOSCACHE
+while_depth
+while_depth getMAP 1 -
+addMAP
+_TOSTACK
+_ADDMACRO
+CLEARSC
+
+n 2 addMAP
+
+add_while_depth
+while_cond 
+n getMAP
+addMAP
+while_cond getMAP
+
+while_body
+_TOSCACHE
+1 print newline
+while_cond while_cond getMAP 1 - addMAP
+while_cond getMAP
+IF
+1 runtimes_pop
+_TOSTACK
+_ADDSC_TOSTACK
+_ADDMACRO
+CLEARSC
+
+IF
+while_body run_string
+_TOSTACK
